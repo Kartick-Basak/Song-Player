@@ -1,0 +1,68 @@
+/* Custom CSS for music player components */
+
+/* Base font and colors */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap');
+
+body {
+    font-family: 'Helvetica', sans-serif;
+}
+
+/* Volume Slider Styling */
+.volume-slider {
+    appearance: none;
+    -webkit-appearance: none;
+    background: transparent;
+    cursor: pointer;
+    width: 100%;
+}
+
+/* Track styling for WebKit browsers (Chrome, Safari) */
+.volume-slider::-webkit-slider-runnable-track {
+    width: 100%;
+    height: 4px;
+    background: #4a5568;
+    border-radius: 9999px;
+}
+
+/* Thumb (slider handle) styling for WebKit browsers */
+.volume-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    margin-top: -6px; /* Center thumb vertically */
+    height: 16px;
+    width: 16px;
+    background: #ffffff;
+    border-radius: 9999px;
+    box-shadow: 0 0 4px rgba(0, 0, 0, 0.3);
+    transition: box-shadow 0.2s, transform 0.2s;
+}
+
+/* Hover and active states for WebKit thumb */
+.volume-slider::-webkit-slider-thumb:hover {
+    box-shadow: 0 0 6px rgba(255, 255, 255, 0.5);
+    transform: scale(1.1);
+}
+
+/* Track styling for Mozilla browsers (Firefox) */
+.volume-slider::-moz-range-track {
+    width: 100%;
+    height: 4px;
+    background: #4a5568;
+    border-radius: 9999px;
+}
+
+/* Thumb styling for Mozilla browsers */
+.volume-slider::-moz-range-thumb {
+    height: 16px;
+    width: 16px;
+    background: #ffffff;
+    border-radius: 9999px;
+    box-shadow: 0 0 4px rgba(0, 0, 0, 0.3);
+    border: none;
+    transition: box-shadow 0.2s, transform 0.2s;
+}
+
+/* Hover and active states for Mozilla thumb */
+.volume-slider::-moz-range-thumb:hover {
+    box-shadow: 0 0 6px rgba(255, 255, 255, 0.5);
+    transform: scale(1.1);
+}

@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SoundVerse - Music Player</title>
+    <!-- Import Tailwind CSS for utility classes -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Link the custom stylesheet -->
+    <link rel="stylesheet" href="style.css">
+    <!-- Use Phosphor Icons for a clean icon set, like the one in the screenshot -->
+    <script src="https://unpkg.com/@phosphor-icons/web@2.0.3"></script>
+</head>
+<body class="bg-zinc-950 text-gray-200">
+    <div class="flex h-screen overflow-hidden">
+        <!-- Left Sidebar -->
+        <aside class="flex-shrink-0 w-64 bg-zinc-900 border-r border-zinc-800 p-4">
+            <div class="flex items-center space-x-2 mb-8">
+                <!-- SoundVerse Logo and text -->
+                <i class="ph ph-headphones text-3xl text-emerald-400"></i>
+                <span class="text-xl font-bold text-gray-50">SoundVerse</span>
+            </div>
+            <nav>
+                <ul class="space-y-2 text-lg">
+                    <li>
+                        <a href="#" class="flex items-center space-x-3 p-3 rounded-lg hover:bg-zinc-800 transition-colors duration-200 text-gray-50 font-semibold">
+                            <i class="ph ph-house text-2xl"></i>
+                            <span>Home</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="flex items-center space-x-3 p-3 rounded-lg hover:bg-zinc-800 transition-colors duration-200">
+                            <i class="ph ph-magnifying-glass text-2xl"></i>
+                            <span>Search</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="flex items-center space-x-3 p-3 rounded-lg hover:bg-zinc-800 transition-colors duration-200">
+                            <i class="ph ph-book text-2xl"></i>
+                            <span>Your Library</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Main Content Area -->
+        <div class="flex-grow flex flex-col">
+            <!-- Top Bar -->
+            <header class="flex-shrink-0 flex items-center justify-between p-4 bg-zinc-900 border-b border-zinc-800">
+                <div class="flex items-center space-x-2">
+                    <button class="bg-zinc-800 rounded-full w-8 h-8 flex items-center justify-center text-gray-400 hover:text-gray-200 transition-colors duration-200">
+                        <i class="ph ph-caret-left"></i>
+                    </button>
+                    <button class="bg-zinc-800 rounded-full w-8 h-8 flex items-center justify-center text-gray-400 hover:text-gray-200 transition-colors duration-200">
+                        <i class="ph ph-caret-right"></i>
+                    </button>
+                </div>
+                <h1 class="text-3xl font-extrabold text-white">SoundVerse Playlists</h1>
+               <!-- <button class="px-6 py-2 bg-red-600 rounded-full text-white font-semibold hover:bg-red-700 transition-colors duration-200">
+                    Log Out
+                </button>
+                -->
+            </header>
+
+            <!-- Main Scrollable Content -->
+            <main class="flex-grow p-6 overflow-y-auto">
+                <!-- Content goes here. For now, it's just a placeholder. -->
+                <p class="text-gray-400">Your awesome playlist content will be displayed here.</p>
+            </main>
+        </div>
+    </div>
+
+    <!-- Persistent Music Player Bar at the Bottom -->
+    <div class="fixed bottom-0 left-0 right-0 h-24 bg-zinc-900 border-t border-zinc-800 flex items-center justify-between px-6 z-50">
+        <!-- Song Info (Left) -->
+        <div class="flex-shrink-0 w-64 flex items-center space-x-4">
+            <!-- You can add a song cover image here if you want -->
+            <div class="w-14 h-14 bg-zinc-800 rounded-lg flex items-center justify-center">
+                <i class="ph ph-music-notes text-2xl text-gray-400"></i>
+            </div>
+            <div>
+                <h3 id="song-title" class="text-md font-semibold text-white">Song Title</h3>
+                <p id="song-artist" class="text-sm text-gray-400">Artist Name</p>
+            </div>
+        </div>
+
+        <!-- Player Controls (Center) -->
+        <div class="flex-grow flex flex-col items-center justify-center px-4 max-w-2xl">
+            <div class="flex items-center space-x-6 mb-2">
+                <button id="shuffle-btn" class="text-gray-400 hover:text-white transition-colors duration-200">
+                    <i class="ph ph-shuffle text-2xl"></i>
+                </button>
+                <button id="prev-btn" class="text-gray-400 hover:text-white transition-colors duration-200">
+                    <i class="ph ph-skip-back text-2xl"></i>
+                </button>
+                <button id="play-pause-btn" class="bg-white text-black w-10 h-10 rounded-full flex items-center justify-center hover:scale-110 transition-transform duration-200">
+                    <i id="play-icon" class="ph ph-play text-xl"></i>
+                    <i id="pause-icon" class="ph ph-pause text-xl hidden"></i>
+                </button>
+                <button id="next-btn" class="text-gray-400 hover:text-white transition-colors duration-200">
+                    <i class="ph ph-skip-forward text-2xl"></i>
+                </button>
+                <button id="repeat-btn" class="text-gray-400 hover:text-white transition-colors duration-200">
+                    <i class="ph ph-repeat text-2xl"></i>
+                </button>
+            </div>
+            <div class="flex items-center w-full space-x-3">
+                <span id="current-time" class="text-xs text-gray-400">0:00</span>
+                <div id="progress-bar-container" class="flex-grow h-1.5 bg-zinc-800 rounded-full cursor-pointer">
+                    <div id="progress-bar" class="h-full bg-white rounded-full transition-all duration-100 ease-linear"></div>
+                </div>
+                <span id="duration" class="text-xs text-gray-400">0:00</span>
+            </div>
+        </div>
+
+        <!-- Volume Control (Right) -->
+        <div class="flex-shrink-0 w-64 flex items-center justify-end space-x-2">
+            <i class="ph ph-volume-low text-xl text-gray-400"></i>
+            <input type="range" id="volume-slider" class="w-24 volume-slider" min="0" max="1" step="0.01" value="0.5">
+            <i class="ph ph-volume-high text-xl text-gray-400"></i>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
